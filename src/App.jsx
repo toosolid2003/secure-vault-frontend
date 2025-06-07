@@ -1,5 +1,4 @@
 import { useState, useEffect  } from 'react';
-import { BrowserProvider, Contract } from "ethers";
 import { ethers } from "ethers";
 import './App.css'
 import SecureVault from './SecureVault.json';
@@ -9,7 +8,7 @@ import ClaimBountyForm from './components/claimBounty';
 import RefundForm from './components/refund';
 import GetDeadline from './components/getDeadline';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, usePublicClient, useWalletClient } from 'wagmi';
+import { useAccount,  useWalletClient } from 'wagmi';
 
 
 export const abi = SecureVault.abi;
@@ -23,7 +22,6 @@ function App() {
   const [owner, setOwner] = useState(null);
 
   const { address, isConnected } = useAccount();
-  const { data: walletClient } = useWalletClient(); // signer-like object
   // const publicClient = usePublicClient(); // for read-only
 
 
@@ -34,6 +32,7 @@ function App() {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contractInstance = new ethers.Contract(contractAddress, SecureVault.abi, signer);
+      console.log("Contract: ", contractInstance.address)
 
       setContract(contractInstance);
       setWalletAddress(address);
@@ -69,9 +68,9 @@ function App() {
 
   // Helper functions
   const isOwner = walletAddress && owner && walletAddress.toLowerCase() === owner.toLowerCase();
-  console.log("isOwner:" , {isOwner});
+  
   const isHunter = walletAddress && hunter && walletAddress.toLowerCase() === hunter.toLowerCase();
-  console.log("isHunter:", {isHunter});
+  
 
   // Card rendering logic
   const renderCards = () => {

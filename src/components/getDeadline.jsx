@@ -38,7 +38,7 @@ function GetDeadline({ contract }) {
 
   return (
     <div>
-      <h4>Deadline: {deadline || 'Loading...'}</h4>
+      <h4>Deadline: {deadline || 'Connect your wallet first!'}</h4>
     </div>
   );
 }
