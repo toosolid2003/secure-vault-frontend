@@ -2,7 +2,7 @@ import { useState, useEffect  } from 'react';
 import { BrowserProvider, Contract } from "ethers";
 import { ethers } from "ethers";
 import './App.css'
-import SecureVault from '../../artifacts/contracts/secure_vault.sol/SecureVault.json';
+import SecureVault from './SecureVault.json';
 import AssignHunterForm from './components/assignHunter';
 import DepositFundsForm from './components/depositFunds';
 import ClaimBountyForm from './components/claimBounty';
