@@ -7,6 +7,7 @@ import DepositFundsForm from './components/depositFunds';
 import ClaimBountyForm from './components/claimBounty';
 import RefundForm from './components/refund';
 import GetDeadline from './components/getDeadline';
+import GetBalance from './components/sizePrize';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount,  useWalletClient } from 'wagmi';
 
@@ -115,8 +116,9 @@ function App() {
 
       <div className="main">
             <div className='left-box'>
+              <h2>Cross-Site Vulnerability</h2>
               <div className="description">
-                  <p>Cross-Site Scripting (XSS) vulnerability has been identified in the user profile page of the application. When a user updates their profile information, specifically the "About Me" section, it does not properly sanitize input/ 
+                  Cross-Site Scripting (XSS) vulnerability has been identified in the user profile page of the application. When a user updates their profile information, specifically the "About Me" section, it does not properly sanitize input/ 
                   This allows an attacker to inject malicious JavaScript code that executes when other users view the profile.
                      <h5>Expected Result:</h5>
                       The application should sanitize the input and display the text without executing any scripts.<br/>
@@ -129,12 +131,12 @@ function App() {
 
                       <h5>Recommendation:</h5>
                       Implement proper input validation and output encoding to prevent XSS attacks. Use libraries such as DOMPurify to sanitize user inputs before rendering them on the page.
-                  </p>
+                 
               </div>
             </div>
 
             <div className='side-panel'>
-              <h3>Prize: 3 ETH </h3>
+              <h3>Prize: <GetBalance contract={contract} /> ETH </h3>
               <ConnectButton />
               {renderCards()}
             </div>
