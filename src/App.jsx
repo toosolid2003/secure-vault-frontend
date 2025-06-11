@@ -138,7 +138,12 @@ function App() {
             </div>
 
             <div className='side-panel'>
-              <GetBalance contract={contract} />
+              {!contract ? (
+                <div></div>
+              ) : (
+                <GetBalance contract={contract} />
+              )}
+              
               {renderCards()}
             </div>
 

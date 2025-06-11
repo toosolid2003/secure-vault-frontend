@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { ethers } from 'ethers';
 
 
 // Set useState 
@@ -14,12 +15,24 @@ function GetBalance({ contract })   {
             if(!contract) return;
 
             const b = await contract.checkBalance();
-            setBalance(b);
+            setBalance(ethers.formatEther(b));
     
         }
 
     fetchBalance(); // calling the function just after being defined
-    }, [contract]   // Everytime the contract variable changes, call the fecthBalance function
+    
+    const onDeposit = (sender, amount) => {
+        console.log("New deposit from:", sender, "for ", amount.toString());
+        fetchBalance(); // Fetchbalance everytime a new deposit is made
+    };
+
+    contract.on('Deposit', onDeposit);
+
+    return() => {
+        contract.off('Deposit', onDeposit);
+    };
+
+    }, [contract]   // Also, everytime the contract variable changes, call the fecthBalance function
     );
 
     return(
@@ -32,3 +45,5 @@ function GetBalance({ contract })   {
 }
 
 export default GetBalance;
+
+// event Deposit(address indexed contributor, uint amount);
