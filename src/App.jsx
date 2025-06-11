@@ -105,7 +105,6 @@ function App() {
 
       <>
       <div className="top-menu">
-        <ConnectButton />
         
       </div>
           <div className="title-box">
@@ -115,30 +114,36 @@ function App() {
           </div>
 
       <div className="main">
-
-          <div className="right-box">
+            <div className='left-box'>
               <div className="description">
                   <p>Cross-Site Scripting (XSS) vulnerability has been identified in the user profile page of the application. When a user updates their profile information, specifically the "About Me" section, it does not properly sanitize input/ 
                   This allows an attacker to inject malicious JavaScript code that executes when other users view the profile.
-                     <strong><br/>Expected Result:</strong><br/>
+                     <h5>Expected Result:</h5>
                       The application should sanitize the input and display the text without executing any scripts.<br/>
 
-                      <strong>Result:</strong><br/>
+                      <h5>Result:</h5>
                       The injected script executes, displaying an alert box with the message "XSS Vulnerability!" when the profile is viewed.
 
-                       <strong>Impact:</strong><br/>
+                       <h5>Impact:</h5>
                       This vulnerability can lead to session hijacking, data theft, or other malicious actions against users of the application. It poses a significant security risk, especially if sensitive information is accessible through the user profiles.<br/>
 
-                      <strong>Recommendation:</strong><br/>
+                      <h5>Recommendation:</h5>
                       Implement proper input validation and output encoding to prevent XSS attacks. Use libraries such as DOMPurify to sanitize user inputs before rendering them on the page.
                   </p>
               </div>
-              <div className="card-box">
-                  {renderCards()}
-              </div>
-          </div>
+            </div>
 
-      </div>        
+            <div className='side-panel'>
+              <h3>Prize: 3 ETH </h3>
+              <ConnectButton />
+              {renderCards()}
+            </div>
+
+
+       </div>
+        
+
+
       
       </>  
  
