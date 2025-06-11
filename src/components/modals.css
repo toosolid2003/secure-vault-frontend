@@ -1,0 +1,20 @@
+/* Modal.css */
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ReactModal__Content {
+  position: relative;
+  inset: auto !important;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  margin: auto;
+  background: rgb(35, 35, 35);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: black;
+}

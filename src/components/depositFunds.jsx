@@ -1,62 +1,69 @@
+// DepositFundsButton.jsx
+import React, { useState } from "react";
+import Modal from "react-modal";
 import { ethers } from "ethers";
-import { useState } from "react";
+import './cards.css';
 
-function DepositFundsForm({contract}) {
-    const [amount, setAmount] = useState("");
-    const [txstatus, settxStatus] = useState("");
+// Set app element for accessibility
+Modal.setAppElement("#root");
 
-    // Define handler function to change amount 
-    const handleChange = (e) => {
-        setAmount(e.target.value);
-    };
+function DepositFundsButton({ contract }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [amount, setAmount] = useState("");
+  const [txStatus, setTxStatus] = useState("");
 
-    const handleSubmit = async (e)  =>  {
-        e.preventDefault();
-        if(!contract)   {
-            alert("Contract not connected");
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!contract) {
+      alert("Contract not connected");
+      return;
+    }
 
-        try    {
-            settxStatus("Sending transaction...");
-            const tx = await contract.deposit( {value: ethers.parseEther(amount) });
-            await tx.wait();
-            settxStatus("Your deposit has been successful!");
-        }
-        catch (err) {
-            console.log(err);
-            if(err.reason)  {
-                settxStatus(`We ran into a little issue: ${err.reason}.\nMake sure you deposit less than 2 ETH.`);
-            }
-            else{
-                settxStatus("Transaction incomplete.");
-            }
-            
+    try {
+      setTxStatus("Sending transaction...");
+      const tx = await contract.deposit({ value: ethers.parseEther(amount) });
+      await tx.wait();
+      setTxStatus("Your deposit has been successful!");
+    } catch (err) {
+      console.error(err);
+      if (err.reason) {
+        setTxStatus(
+          `We ran into a little issue: ${err.reason}. Make sure you deposit less than 2 ETH.`
+        );
+      } else {
+        setTxStatus("Transaction incomplete.");
+      }
+    }
+  };
 
-        }
-    };
+  return (
+    <>
+      <button className='modal-button' onClick={() => setIsOpen(true)}>Contribute</button>
 
-    return(
-        <div className="card">
-            <h2>Contribute</h2>
-            <p>Deposit ETH in this secure vault to contribute to the prize</p>
-            <form onSubmit={handleSubmit} className="secure-form">
-                <input
-                type="text"
-                placeholder="enter amount" 
-                value={amount}
-                onChange={handleChange}
-                />
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        contentLabel="Deposit ETH"
+        shouldCloseOnOverlayClick={true}
 
-                <button type="submit">
-                 Deposit
-                 </button>
+        >
 
-            </form>        
-
-        </div>
-
-    );
-
+        <button className="modal-close" onClick={() => setIsOpen(false)}>×</button> 
+        <h2>Deposit ETH</h2>
+        <p>Deposit ETH in this secure vault to contribute to the prize</p>
+        <form onSubmit={handleSubmit} className="secure-form">
+          <input
+            type="text"
+            placeholder="Enter amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <button type="submit">Confirm Deposit</button>
+        </form>
+        <p>{txStatus}</p>
+      </Modal>
+    </>
+  );
 }
 
-export default DepositFundsForm;
+export default DepositFundsButton;

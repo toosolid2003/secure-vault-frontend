@@ -24,7 +24,7 @@ function GetBalance({ contract })   {
 
     return(
         <div>
-            {balance}
+           <h3>Prize: {balance} ETH</h3> 
         </div>
     )
 

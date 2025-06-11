@@ -136,7 +136,7 @@ function App() {
             </div>
 
             <div className='side-panel'>
-              <h3>Prize: <GetBalance contract={contract} /> ETH </h3>
+              <GetBalance contract={contract} />
               <ConnectButton />
               {renderCards()}
             </div>
