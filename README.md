@@ -1,13 +1,56 @@
-# React + Vite
+# 🔐 Secure Vault Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based frontend for interacting with the Secure Vault smart contract. This project aims to provide a clean, secure, and intuitive user interface for managing secure bounties on-chain.
 
-Currently, two official plugins are available:
+![Preview](https://secure-vault-frontend.vercel.app) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [wagmi](https://wagmi.sh/)
+- [RainbowKit](https://rainbowkit.com/)
+- [ethers.js](https://docs.ethers.org/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# secure-vault-frontend
+## 🚀 Features
+
+- Connect your wallet via MetaMask or WalletConnect
+- Interact with an existing Secure Vault contract
+- View, contribute to and release bounties
+- Real-time UI feedback and transaction status
+- Responsive design for mobile and desktop
+
+## 🧰 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (>= 18)
+- npm or yarn
+- A Web3 wallet (e.g. MetaMask)
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/toosolid2003/secure-vault-frontend.git
+cd secure-vault-frontend
+```
+
+Install the dependencies
+```bash
+npm install
+```
+
+Start the development server
+```bash
+npm run dev
+```
+
+### Configuration
+Make sure to copy/paste the right contract address in the App.jsx file.
+
+### License
+MIT © 2025
