@@ -31,21 +31,9 @@
 }
 
 /* Button Styling (consistent with the page) */
-.card button {
-  background: linear-gradient(90deg, #00ffff 0%, #0077ff 100%);
-  color: #181818;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,255,255,0.08);
-  margin-top: auto;
-}
 
-.card button:hover {
+
+.modal-button:hover {
   background: linear-gradient(90deg, #0077ff 0%, #00ffff 100%);
   color: #fff;
 }
@@ -77,8 +65,10 @@
   background: linear-gradient(90deg, #00ffff 0%, #0077ff 100%);
   color: #181818;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  min-width: 300px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;

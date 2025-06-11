@@ -1,10 +1,14 @@
 import { useState } from "react";
 import './cards.css';
+import Modal from "react-modal";
 
 
+// Set app element for accessibility
+Modal.setAppElement("#root");
 
 function RefundForm({contract})    {
     const [txstatus, settxStatus] = useState("");
+    const [isOpen, setOpen] = useState(false);
     
     
 
@@ -32,13 +36,27 @@ function RefundForm({contract})    {
     };
 
     return (
-        <div className="card">
-                <h2>Refund</h2>
-                <p>You can ask for a refund before the deadline expires. Fees are on you.</p>
-            <form onSubmit={handleSubmit} className="secure-form">
-                <button type="submit">Ask refund</button>
-            </form>
-        </div>
+        <>
+            <button className="modal-button" onClick={() => setOpen(true)}>Refund</button>
+            <Modal
+                isOpen={isOpen}
+                shouldCloseOnOverlayClick={true}
+                onRequestClose={() => setOpen(false)}
+                contentLabel="Ask for refund"
+                >
+        
+                <button className="modal-close" onClick={() => setOpen(false)}>x</button>
+                    <h2>Refund</h2>
+                    <p>You can ask for a refund before the deadline expires. Fees are on you.</p>
+                    <form onSubmit={handleSubmit} className="secure-form">
+                        <button type="submit">Ask refund</button>
+                    </form>
+                    <p>{txstatus}</p>
+
+            </Modal>        
+        </>
+
+
 
     )
 };

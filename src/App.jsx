@@ -105,9 +105,11 @@ function App() {
   return (
 
       <>
-      <div className="top-menu">
-        
-      </div>
+        <div className="top-menu">
+          <ConnectButton />
+         
+        </div>
+
           <div className="title-box">
              <h4>The challenge</h4>
             <h1>Cross-Site Scripting (XSS) Vulnerability in User Profile Page</h1>
@@ -137,7 +139,6 @@ function App() {
 
             <div className='side-panel'>
               <GetBalance contract={contract} />
-              <ConnectButton />
               {renderCards()}
             </div>
 

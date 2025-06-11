@@ -1,10 +1,13 @@
 import { useState } from "react";
 import './cards.css';
+import Modal from 'react-modal';
 
 
+Modal.setAppElement('#root');
 
 function ClaimBountyForm({contract})    {
     const [txstatus, settxStatus] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
     
     
 
@@ -34,14 +37,25 @@ function ClaimBountyForm({contract})    {
     };
 
     return (
-        <div className="card">
-            <h2>Claim your bounty!</h2>
-            <p>Congrats, you have been rewarded with the bounty. Claim it here!</p>
-            <form onSubmit={handleSubmit} className="secure-form">
-            </form>
+        <>
+            <button className="modal-button" onClick={() => setIsOpen(true)}>Claim</button>
+            <Modal
+                isOpen={isOpen}
+                shouldCloseOnOverlayClick={true}
+                onRequestClose={() => setIsOpen(false)}
+                contentLabel="Claim your bounty!"
+            
+            >
+                <button className="modal-close" onClick={() => setIsOpen(false)}>x</button>
+                <h2>You won the contest!</h2>
+                <p>Congrats, you have been rewarded with the bounty. Claim it here!</p>
+                <form onSubmit={handleSubmit} className="secure-form">
+                    <button type="submit">Claim</button> 
+                </form>
 
-                <button type="submit">Claim</button>
-        </div>
+            </Modal>
+        </>
+
 
     )
 };
