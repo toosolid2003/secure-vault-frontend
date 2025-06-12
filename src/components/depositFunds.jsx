@@ -77,7 +77,7 @@ function DepositFundsButton({ contract }) {
             step="0.01"
             min="0"
             max="2"
-            placeholder="Enter amount between 0.5 and 2 ETH"
+            placeholder="Enter amount between 0.01 and 2 ETH"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />

@@ -31,7 +31,7 @@ function GetBalance({ contract })   {
     fetchBalance();
     contract.on('Deposit', onDeposit);
 
-    return() => {
+    return () => {
         isMounted = false;
         contract.off('Deposit', onDeposit);
     };
@@ -43,7 +43,7 @@ function GetBalance({ contract })   {
 
     return(
         <div>
-           <h3>Prize: {balance} ETH</h3> 
+           <h3>Prize: {balance ?? 'Loading balance...'} ETH</h3> 
         </div>
     )
 
