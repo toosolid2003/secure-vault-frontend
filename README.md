@@ -2,7 +2,9 @@
 
 A React-based frontend for interacting with the Secure Vault smart contract. This project aims to provide a clean, secure, and intuitive user interface for managing secure bounties on-chain.
 
-[Working Demo](https://secure-vault-frontend.vercel.app) 
+[Demo Video](https://www.loom.com/share/aca10764b90e4f50a598b2ca9518805f?sid=b2a43eb9-32ac-40bb-898f-51aa77014f76)
+
+[Working Front-End](https://secure-vault-frontend.vercel.app) 
 
 ## 🛠️ Tech Stack
 
