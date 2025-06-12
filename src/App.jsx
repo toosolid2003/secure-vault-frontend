@@ -75,30 +75,39 @@ function App() {
 
   // Card rendering logic
   const renderCards = () => {
-    if (isOwner)  {
+    if(!contract) {
       return(
         <>
-          <DepositFundsForm contract={contract} />
-          <AssignHunterForm contract={contract} />
-          <RefundForm contract={contract} />
+          <p>Connect your wallet to get started.</p>
         </>
-      );
-    } else if (isHunter)  {
-      return(
-      <>
-          <DepositFundsForm contract={contract} />
-          <ClaimBountyForm contract={contract} />
-      </>
-      );
-    } else{
-      console.log("no hunter or owner");
+      )
+    }
+    else  {
+      if (isOwner)  {
+        return(
+          <>
+            <DepositFundsForm contract={contract} />
+            <AssignHunterForm contract={contract} />
+            <RefundForm contract={contract} />
+          </>
+        );
+      } else if (isHunter)  {
         return(
         <>
-          <DepositFundsForm contract={contract} />
-          <RefundForm contract={contract} />        
+            <DepositFundsForm contract={contract} />
+            <ClaimBountyForm contract={contract} />
         </>
-    
-  )}
+        );
+      } else{
+        console.log("no hunter or owner");
+          return(
+          <>
+            <DepositFundsForm contract={contract} />
+            <RefundForm contract={contract} />        
+          </>
+    )}
+    }
+
   };
 
 

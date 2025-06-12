@@ -14,10 +14,30 @@ function DepositFundsButton({ contract }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const ethAmount = parseFloat(amount);
+
+    // Input validation
+    if(isNaN(ethAmount)) {
+      setTxStatus("Please enter a valid number.");
+      return;
+    }
+
+    if(ethAmount <= 0)  {
+      setTxStatus("Please enter a positive number.");
+      return;
+    }
+
+    if(ethAmount > 2) {
+      setTxStatus("You cannot contribute more than 2 ETH.");
+      return;
+    }
+
     if (!contract) {
       alert("Contract not connected");
       return;
     }
+
+   
 
     try {
       setTxStatus("Sending transaction...");
@@ -54,7 +74,10 @@ function DepositFundsButton({ contract }) {
         <form onSubmit={handleSubmit} className="secure-form">
           <input
             type="text"
-            placeholder="Enter amount"
+            step="0.01"
+            min="0"
+            max="2"
+            placeholder="Enter amount between 0.5 and 2 ETH"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />

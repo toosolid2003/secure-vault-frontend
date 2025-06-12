@@ -111,14 +111,15 @@ h5  {
   padding: 1em 2em;
 }
 
-/* Description */
-.description {
-  /* padding: 1.5rem; */
-}
 
 .side-panel {
   display: flex;
   flex-direction: column;
+  background-color: rgba(22, 22, 22, 0.7);
+  border-radius: 1rem;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.02);
+  padding: 1em 2em;
 }
 
 /* Cards */
