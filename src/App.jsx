@@ -9,11 +9,14 @@ import RefundForm from './components/refund';
 import GetDeadline from './components/getDeadline';
 import GetBalance from './components/sizePrize';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount,  useWalletClient } from 'wagmi';
+import { useAccount,  useWatchContractEvent } from 'wagmi';
 
 
 export const abi = SecureVault.abi;
 const contractAddress = "0x855b3d7cD376b2FBF1AE0e69B1D11Ec4f989E302"; // on Sepolia
+
+
+
 
 function App() {
   const [walletAddress, setWalletAddress] = useState(null);
@@ -23,9 +26,19 @@ function App() {
   const [owner, setOwner] = useState(null);
 
   const { address, isConnected } = useAccount();
-  // const publicClient = usePublicClient(); // for read-only
+
+  // Listening to contract events and publish it on the console
+  useWatchContractEvent({
+    address: contractAddress,
+    abi: abi,
+    eventName: 'Deposit',
+    onLogs(logs) {
+      console.log('New deposit: ', logs)
+    }
+  })
 
 
+  // Contract set up
   useEffect(()  => {
     const setupContract = async () => {
       if (!window.ethereum || !isConnected) return;
