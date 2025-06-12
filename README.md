@@ -49,8 +49,12 @@ Start the development server
 npm run dev
 ```
 
-### Configuration
-Make sure to copy/paste the right contract address in the App.jsx file.
+## 🚀 Deployment
+
+- **Contract Name:** SecureVault
+- **Network:** Sepolia Testnet
+- **Contract Address:** [`0x0x855b3d7cD376b2FBF1AE0e69B1D11Ec4f989E302`](https://sepolia.etherscan.io/address/0x855b3d7cD376b2FBF1AE0e69B1D11Ec4f989E302)
+- **Frontend:** [secure-vault-frontend.vercel.app](https://secure-vault-frontend.vercel.app)
 
 ### License
 MIT © 2025
