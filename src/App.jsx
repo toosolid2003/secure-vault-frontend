@@ -19,7 +19,7 @@ const contractAddress = "0x855b3d7cD376b2FBF1AE0e69B1D11Ec4f989E302"; // on Sepo
 
 
 function App() {
-  const [walletAddress, setWalletAddress] = useState(null);
+  // const [walletAddress, setWalletAddress] = useState(null);
   const [message, setMessage] = useState(null);
   const [contract, setContract] = useState(null);
   const [hunter, setHunter] = useState(null);
@@ -49,7 +49,7 @@ function App() {
       console.log("Contract: ", contractInstance.address)
 
       setContract(contractInstance);
-      setWalletAddress(address);
+      // setWalletAddress(address);
 
       try{
         const ownerAddress = await contractInstance.owner();
@@ -81,14 +81,13 @@ function App() {
   }, [contract]);
 
   // Helper functions
-  const isOwner = walletAddress && owner && walletAddress.toLowerCase() === owner.toLowerCase();
-  
-  const isHunter = walletAddress && hunter && walletAddress.toLowerCase() === hunter.toLowerCase();
+  const isOwner = address && owner && address.toLowerCase() === owner.toLowerCase();
+  const isHunter = address && hunter && address.toLowerCase() === hunter.toLowerCase();
   
 
   // Card rendering logic
   const renderCards = () => {
-    if(!contract) {
+    if(!address) {
       return(
         <>
           <p>Connect your wallet to get started.</p>
@@ -111,7 +110,7 @@ function App() {
             <ClaimBountyForm contract={contract} />
         </>
         );
-      } else{
+      } else {
         console.log("no hunter or owner");
           return(
           <>
