@@ -55,7 +55,7 @@ npm run dev
 
 - **Contract Name:** SecureVault
 - **Network:** Sepolia Testnet
-- **Contract Address:** [`0x0x855b3d7cD376b2FBF1AE0e69B1D11Ec4f989E302`](https://sepolia.etherscan.io/address/0x855b3d7cD376b2FBF1AE0e69B1D11Ec4f989E302)
+- **Contract Address:** [`0xDFB5C86185990487c6b44f9f634F1AA0790ea370`](https://sepolia.etherscan.io/address/0xDFB5C86185990487c6b44f9f634F1AA0790ea370)
 - **Frontend:** [secure-vault-frontend.vercel.app](https://secure-vault-frontend.vercel.app)
 
 ### License
