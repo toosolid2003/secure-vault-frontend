@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
 
 function GetDeadline({ contract }) {
   const [deadline, setDeadline] = useState('');
@@ -9,24 +10,33 @@ function GetDeadline({ contract }) {
 
       try {
         const rawDeadline = await contract.checkDeadline();
+
+
         const timestamp = Number(rawDeadline.toString()) * 1000; // Convert to ms
         const date = new Date(timestamp);
         const now = new Date();
         const diffInMs = date - now;
         const daysLeft = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 
-        const options = {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        };
+        if(daysLeft < 0)  {
+          setDeadline("Deadline has expired");
+        }
 
-        const formatted = date.toLocaleString(undefined, options);
-        setDeadline(`${formatted} (${daysLeft} days left)`);
+        else{
+          const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          };
+
+          const formatted = date.toLocaleString(undefined, options);
+          setDeadline(`${formatted} (${daysLeft} days left)`);
+        }
+
       } catch (err) {
         console.error("Error fetching deadline:", err);
         setDeadline("Error loading deadline");

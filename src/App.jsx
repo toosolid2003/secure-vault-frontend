@@ -167,16 +167,9 @@ function App() {
               
               {renderCards()}
             </div>
-
-
        </div>
         
-
-
-      
       </>  
- 
-        
 
   );
 }
